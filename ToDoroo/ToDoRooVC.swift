@@ -11,10 +11,14 @@ import UIKit
 class ToDoRooVC: UITableViewController {
     
     var itemArray = ["Find soulmate or something","Get Rich","Travel"]
-
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let items = defaults.array(forKey: "OurArray") as? [String] {
+            itemArray = items
+        }
     }
 
     //MARK - TableVCDataSourceMethods
@@ -48,7 +52,10 @@ class ToDoRooVC: UITableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             //what happens when button pressed
          self.itemArray.append(textfield.text!)
+         self.defaults.set(self.itemArray, forKey: "OurArray")
+          
             self.tableView.reloadData()
+            
         }
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Enter new item here"
