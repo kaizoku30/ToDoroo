@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoRooVC: UITableViewController {
     
-    let itemArray = ["Find soulmate or something","Get Rich","Travel"]
+    var itemArray = ["Find soulmate or something","Get Rich","Travel"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ToDoRooVC: UITableViewController {
     //MARK - TableVCDataSourceMethods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return itemArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoRooItemCell", for: indexPath)
@@ -40,6 +40,22 @@ class ToDoRooVC: UITableViewController {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    //Mark - AddNewItems
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textfield = UITextField()
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            //what happens when button pressed
+         self.itemArray.append(textfield.text!)
+            self.tableView.reloadData()
+        }
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter new item here"
+            textfield = alertTextField
+        }
+        alert.addAction(action)
+        present(alert,animated: true,completion: nil)
     }
     
 }
