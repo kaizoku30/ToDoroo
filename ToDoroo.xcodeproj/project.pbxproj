@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C69DE0320F96A7800F725A2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DE0220F96A7800F725A2 /* Item.swift */; };
 		8C8ACECF20F3D7C400963F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8ACECE20F3D7C400963F2A /* AppDelegate.swift */; };
 		8C8ACED120F3D7C400963F2A /* ToDoRooVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8ACED020F3D7C400963F2A /* ToDoRooVC.swift */; };
 		8C8ACED420F3D7C400963F2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8ACED220F3D7C400963F2A /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C69DE0220F96A7800F725A2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8C8ACECB20F3D7C400963F2A /* ToDoroo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoroo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8ACECE20F3D7C400963F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8ACED020F3D7C400963F2A /* ToDoRooVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRooVC.swift; sourceTree = "<group>"; };
@@ -35,6 +37,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C69DE0420F96B2700F725A2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8C8ACED220F3D7C400963F2A /* Main.storyboard */,
+				8C8ACED720F3D7C700963F2A /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8C69DE0520F96B3C00F725A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C69DE0220F96A7800F725A2 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C69DE0620F96B4B00F725A2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C8ACECE20F3D7C400963F2A /* AppDelegate.swift */,
+				8C8ACED020F3D7C400963F2A /* ToDoRooVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C69DE0720F96B5600F725A2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8C8ACED520F3D7C700963F2A /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		8C8ACEC220F3D7C400963F2A = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +90,11 @@
 		8C8ACECD20F3D7C400963F2A /* ToDoroo */ = {
 			isa = PBXGroup;
 			children = (
-				8C8ACECE20F3D7C400963F2A /* AppDelegate.swift */,
-				8C8ACED020F3D7C400963F2A /* ToDoRooVC.swift */,
-				8C8ACED220F3D7C400963F2A /* Main.storyboard */,
-				8C8ACED520F3D7C700963F2A /* Assets.xcassets */,
-				8C8ACED720F3D7C700963F2A /* LaunchScreen.storyboard */,
+				8C69DE0620F96B4B00F725A2 /* Controllers */,
+				8C69DE0720F96B5600F725A2 /* Assets */,
+				8C69DE0420F96B2700F725A2 /* View */,
 				8C8ACEDA20F3D7C700963F2A /* Info.plist */,
+				8C69DE0520F96B3C00F725A2 /* Model */,
 			);
 			path = ToDoroo;
 			sourceTree = "<group>";
@@ -136,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C8ACED120F3D7C400963F2A /* ToDoRooVC.swift in Sources */,
+				8C69DE0320F96A7800F725A2 /* Item.swift in Sources */,
 				8C8ACECF20F3D7C400963F2A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

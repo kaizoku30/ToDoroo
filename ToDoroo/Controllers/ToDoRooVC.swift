@@ -10,15 +10,21 @@ import UIKit
 
 class ToDoRooVC: UITableViewController {
     
-    var itemArray = ["Find soulmate or something","Get Rich","Travel"]
+    var itemArray = [item]()
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let item1 = item()
+//        item1.title="pls work"
+//        itemArray.append(item1)
+//        if let items = defaults.array(forKey: "Our Array") as? [item] {
+//            itemArray = items
+//        }
         // Do any additional setup after loading the view, typically from a nib.
-        if let items = defaults.array(forKey: "OurArray") as? [String] {
-            itemArray = items
-        }
+//        if let items = defaults.array(forKey: "OurArray") as? [String] {
+//            itemArray = items
+//        }
     }
 
     //MARK - TableVCDataSourceMethods
@@ -28,22 +34,38 @@ class ToDoRooVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoRooItemCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.textLabel?.text = itemArray[indexPath.row].title
+        if itemArray[indexPath.row].check == true {
+         cell.accessoryType = .checkmark
+        }
+        else
+        {
+            cell.accessoryType = .none
+            
+        }
         return cell
     }
     
     //MARK - TableVCDelegateMethods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print (indexPath.row)
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        if itemArray[indexPath.row].check == false {
+            itemArray[indexPath.row].check = true
         }
         else
         {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            itemArray[indexPath.row].check = false
         }
+        //print (indexPath.row)
+//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+//        }
+//        else
+//        {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//        }
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
     //Mark - AddNewItems
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -51,9 +73,11 @@ class ToDoRooVC: UITableViewController {
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             //what happens when button pressed
-         self.itemArray.append(textfield.text!)
-         self.defaults.set(self.itemArray, forKey: "OurArray")
-          
+            let newitem = item()
+            newitem.title=textfield.text!
+         self.itemArray.append(newitem)
+//         self.defaults.set(self.itemArray, forKey: "OurArray")
+//
             self.tableView.reloadData()
             
         }
